@@ -3,7 +3,8 @@ FROM openjdk:jdk-alpine
 # OPTION 1 - mvn clean install (has to download everything, everytime)
 # RUN apk update && apk upgrade && apk add --no-cache maven # use this if it makes sense to update
 RUN apk add --no-cache maven
-COPY . /home/
+COPY ./lib/ /home/lib/
+COPY ./src/ /home/src/
 WORKDIR /home/
 RUN mvn clean install
 
