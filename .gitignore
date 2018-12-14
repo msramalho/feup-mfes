@@ -1,3 +1,14 @@
+# Main ignores
+.env
+
+# Meteor
+node_modules/
+
+# Database
+db/
+
+
+# Maven ignores
 target/
 pom.xml.tag
 pom.xml.releaseBackup
