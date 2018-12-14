@@ -39,6 +39,13 @@
       <groupId>org.wildfly.swarm</groupId>
       <artifactId>jaxrs</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.alloytools</groupId>
+      <artifactId>alloy4</artifactId>
+      <version>5.0.0.1</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/Alloy-5.0.0.1.jar</systemPath>
+    </dependency>
   </dependencies>
   <dependencyManagement>
     <dependencies>
