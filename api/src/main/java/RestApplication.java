@@ -1,5 +1,3 @@
-package api;
-
 import javax.ws.rs.core.Application;
 import javax.ws.rs.ApplicationPath;
 
@@ -7,3 +5,4 @@ import javax.ws.rs.ApplicationPath;
 public class RestApplication extends Application {
     public RestApplication() {}
 }
+
