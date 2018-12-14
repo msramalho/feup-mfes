@@ -1,0 +1,35 @@
+version: '3'
+services:
+  meteor: # TODO: criar script que pode ser corrido dentro deste container para recriar o meteor sem ter de fazer build à imagem, dado que o src está atualizado com o volume /opt/meteor/src
+    build:
+      context: ./meteor/
+    ports:
+      - "3010:3000"
+    links:
+      - mongo
+      - api
+    # depends_on: # TOO: depends_on não garante que este começa depois dos outros e isso é desejável, não essencial
+    #   - mongo
+    #   - api
+    volumes:
+      - ./:/opt/meteor/src
+    environment:
+      # - ROOT_URL=http://example.com
+      - MONGO_URL=mongodb://mongo:27017/meteor
+
+  mongo:
+    image: mongo:latest
+    # command: bash -c "mongod --storageEngine=wiredTiger && sudo chmod 777 data/db -R"
+    command: mongod --storageEngine=wiredTiger
+    volumes:
+      - ./db:/data/db # TODO: garantir persistência da DB
+    ports:
+      - "27017:27017"
+
+  api:
+    build:
+      context: ./api/
+    ports:
+      # if access id needed from the outside
+      # don't forget dcompose creates network with every service
+      - "8080:8080" 
