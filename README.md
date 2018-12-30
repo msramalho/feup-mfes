@@ -40,3 +40,7 @@ public/                    # <- static files, such as images, that are served di
 
 tests/                     # <- unit test files (won't be loaded on client or server)
 ```
+
+
+## API
+Since the api is essentially an Alloy4fun webservice a local jar file is used for stability purposes the lib folder structure is required for maven to detect the local repository. 

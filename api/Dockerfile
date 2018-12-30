@@ -5,6 +5,7 @@ FROM openjdk:jdk-alpine
 RUN apk add --no-cache maven
 COPY ./lib/ /home/lib/
 COPY ./src/ /home/src/
+COPY pom.xml /home/
 WORKDIR /home/
 RUN mvn clean install
 

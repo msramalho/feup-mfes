@@ -41,10 +41,8 @@
     </dependency>
     <dependency>
       <groupId>org.alloytools</groupId>
-      <artifactId>alloy4</artifactId>
+      <artifactId>Alloy</artifactId>
       <version>5.0.0.1</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/Alloy-5.0.0.1.jar</systemPath>
     </dependency>
   </dependencies>
   <dependencyManagement>
@@ -64,4 +62,11 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  <repositories>
+    <repository>
+      <id>in-project</id>
+      <name>In Project Repo</name>
+      <url>file://${project.basedir}/lib</url>
+    </repository>
+  </repositories>
 </project>
