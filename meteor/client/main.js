@@ -18,5 +18,12 @@ Template.hello.events({
   'click button'(event, instance) {
     // increment the counter when button is clicked
     instance.counter.set(instance.counter.get() + 1);
+
+    console.log(Template.code);
+  //   HTTP.call('GET', 'http://0.0.0.0:8080/greet', {
+  //       "options": "to set"
+  //   }, function(_, response) {
+  //       console.log("API IS WORKING: " + response.content);
+  //   });
   },
 });
