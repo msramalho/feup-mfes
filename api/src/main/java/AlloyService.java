@@ -7,8 +7,7 @@ import javax.ws.rs.Produces;
 import java.util.Date;
 
 @Path("/greet")
-public class HelloService {
-
+public class AlloyService {
     @GET
     @Produces("text/plain")
     public Response doGet() {
