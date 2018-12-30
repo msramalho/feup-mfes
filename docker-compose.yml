@@ -14,22 +14,17 @@ services:
     volumes:
       - ./:/opt/meteor/src
     environment:
-      # - ROOT_URL=http://example.com
       - MONGO_URL=mongodb://mongo:27017/meteor
-
   mongo:
     image: mongo:latest
     # command: bash -c "mongod --storageEngine=wiredTiger && sudo chmod 777 data/db -R"
     command: mongod --storageEngine=wiredTiger
     volumes:
-      - ./db:/data/db # TODO: garantir persistência da DB
+      - ./data/db:/data/db # TODO: garantir persistência da DB
     ports:
       - "27017:27017"
-
   api:
     build:
       context: ./api/
     ports:
-      # if access id needed from the outside
-      # don't forget dcompose creates network with every service
-      - "8080:8080" 
+      - "8080:8080" # if access id needed from the outside (otherwise no need)
