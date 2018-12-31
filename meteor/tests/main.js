@@ -18,5 +18,14 @@ describe("meteor_docker", function() {
         it("server is not client", function() {
             assert.strictEqual(Meteor.isClient, false);
         });
+        it("should access the API", function() {
+            Meteor.setTimeout(function() {
+                HTTP.call('GET', 'http://0.0.0.0:8080/greet', {
+                    "options": "to set"
+                }, function(_, response) {
+                    console.log("API IS WORKING: " + response.content);
+                });
+            }, 5000)
+        })
     }
 });
