@@ -1,0 +1,34 @@
+<template name="generalSettings">
+    <div>
+        <div class="general-settings">
+            <h3 class="settings-info">General Graph Settings</h3>
+            <hr/>
+
+            <div class="slide">
+                <div class="settings-interface">
+                    <div class="col-md-12 option-field">
+                        <label class="settings-info">Use atoms original names:</label>
+                        <input type="checkbox" class="checkbox-primary" id="originalAtomNames">
+                    </div>
+
+                    <div class="col-md-12 option-field">
+                        <label class="settings-info">Layout :</label><br/>
+                        <select id="layoutPicker" class="settings">
+                            <option value="breadthfirst">Breadthfirst</option>
+                            <option value="random">Random</option>
+                            <option value="grid">Grid</option>
+                            <option value="circle">Circle</option>
+                            <option value="cocentric">Cocentric</option>
+                            <option value="cose">Cose</option>
+                        </select>
+                    </div>
+                    {{isBreadthFirst}}
+                    <div class="col-md-12 option-field node-spacing">
+                        <label class="settings-info">NodeSpacing :</label><br/>
+                        <input type="range" id="nodeSpacing" value="0.4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

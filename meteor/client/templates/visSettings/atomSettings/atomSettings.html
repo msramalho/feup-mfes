@@ -1,0 +1,84 @@
+<template name="atomSettings">
+    <div class="atom-settings">
+        <h3 class="settings-info">Type Settings</h3>
+        {{#with getType}}<h5 class="settings-info">Sig {{this}}</h5>{{/with}}
+        <hr/>
+        <div class="slide">
+
+            <div class="settings-interface">
+                <div class="not-for-univ ">
+                    <div class="col-md-12 option-field projection-settings">
+                        <label class="settings-info">Project over this sig:</label>
+                        <input id="projectOverSig" type="checkbox" class="checkbox-primary" name="projectOverSig" value="true">
+                    </div>
+                    <div class="col-md-12 option-field ">
+                        <label class="settings-info">Label:</label><br/>
+                        <input class="input-settings" type="text" id="atomLabelSettings" placeholder="label">
+                    </div>
+                </div>
+                <div class="col-md-12 option-field hide-unconnected-settings">
+                    <label class="settings-info">Hide unconnected nodes:</label>
+                    <input id= "atomHideUnconnectedNodes" type="checkbox" class="checkbox-primary"><br/>
+                    <div class="not-for-univ">
+                        <label class="settings-info">Inherit property:</label>
+                        <input id= "inheritHideUnconnectedNodes" type="checkbox" class="checkbox-primary" >
+                    </div>
+                </div>
+                <div class="col-md-12 option-field hide-nodes-settings">
+                    <label class="settings-info">Hide nodes:</label>
+                    <input id= "hideNodes" type="checkbox" class="checkbox-primary"><br/>
+                    <div class="not-for-univ">
+                        <label class="settings-info">Inherit property:</label>
+                        <input id= "inheritHideNodes" type="checkbox" class="checkbox-primary" >
+                    </div>
+                </div>
+
+                <div class="col-md-12 option-field number-nodes-settings">
+                    <label class="settings-info">Number nodes:</label>
+                    <input id= "displayNodesNumber" type="checkbox" class="checkbox-primary" ><br/>
+                    <div class="not-for-univ">
+                        <label class="settings-info">Inherit property:</label>
+                        <input id= "inheritDisplayNodesNumber" type="checkbox" class="checkbox-primary" >
+                    </div>
+                </div>
+
+                <div class="col-md-12 option-field">
+                    <label class="settings-info">Node color:</label><br/>
+                    <input id="atomColorSettings" type="text" class="settings" value="#ff3300" />
+                    <div class="not-for-univ">
+                        <label class="settings-info">Inherit color:</label>
+                        <input id= "inheritAtomColor" type="checkbox" class="checkbox-primary" >
+                    </div>
+                </div>
+                <div class="col-md-12 option-field">
+                    <label class="settings-info">Node shape:</label><br/>
+                    <select id="atomShapeSettings" class="settings">
+                        {{#if notUniv}}<option value="inherit">Inherit</option>{{/if}}
+                        <option value="rectangle">Rectangle</option>
+                        <option value="roundrectangle">Round Rectangle</option>
+                        <option value="ellipse">Ellipse</option>
+                        <option value="triangle">Triangle</option>
+                        <option value="pentagon">Pentagon</option>
+                        <option value="hexagon">Hexagon</option>
+                        <option value="heptagon">Heptagon</option>
+                        <option value="octagon">Octagon</option>
+                        <option value="star">Star</option>
+                        <option value="vee">Vee</option>
+                        <option value="rhomboid">Rhomboid</option>
+                    </select>
+                </div>
+                <div class="col-md-12 option-field">
+                    <label class="settings-info">Node border:</label><br/>
+                    <select id="atomBorderSettings" class="settings">
+                        {{#if notUniv}}<option value="inherit">Inherit</option>{{/if}}
+                        <option value="solid">Solid</option>
+                        <option value="dotted">Dotted</option>
+                        <option value="dashed">Dashed</option>
+                        <option value="double">Double</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        {{updateContent}}
+    </div>
+</template>

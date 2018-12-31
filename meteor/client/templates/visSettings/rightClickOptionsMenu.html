@@ -1,0 +1,40 @@
+<template name="rightClickOptionsMenu">
+    <div id="optionsMenu">
+        {{updateRightClickContent}}
+        <div id='cssmenu'>
+            <ul>
+                <li class="has-sub"><a id ="changeAtomColor" href='#'>Change color of {{getRightClickTargetType}}</a>
+                    <ul>
+                        <li><input type="text" class="right-click-color-picker"  /></li>
+                        <li class="right-click-inherit-color">
+                            <label class="settings-info">Inherit color:</label>
+                            <input id= "rightClickInheritAtomColor" type="checkbox" class="checkbox-primary" >
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a id ="changeAtomShape" href='#'>Change shape of {{getRightClickTargetType}}</a>
+                    <ul>
+                        <li>
+                            <select class="right-click-shape-picker" >
+                                <option value="inherit">Inherit</option>
+                                <option value="rectangle">Rectangle</option>
+                                <option value="roundrectangle">Round Rectangle</option>
+                                <option value="ellipse">Ellipse</option>
+                                <option value="triangle">Triangle</option>
+                                <option value="pentagon">Pentagon</option>
+                                <option value="hexagon">Hexagon</option>
+                                <option value="heptaton">Heptagon</option>
+                                <option value="octagon">Octagon</option>
+                                <option value="star">Star, diamond</option>
+                                <option value="vee">Vee</option>
+                                <option value="rhomboid">Rhomboid</option>
+                            </select>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-sub"><a id ="rightClickProject" href='#'>Project over {{getRightClickTargetType}}</a></li>
+            </ul>
+        </div>
+    </div>
+</template>

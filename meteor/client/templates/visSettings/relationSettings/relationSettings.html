@@ -1,0 +1,42 @@
+<template name="relationSettings">
+    <div class="relation-settings">
+        <h3 class="settings-info">Relation Settings</h3>
+        {{#with getRelation}}<h5 class="settings-info">Relation {{this}}</h5>{{/with}}
+        <hr/>
+        <div>
+            <div class="slide">
+                {{updateContent}}
+                <div class="settings-interface">
+
+                    <div class="col-md-12 option-field">
+                        <label class="settings-info">Label:</label><br/>
+                        <input class="input-settings" type="text" id="relationLabelSettings" placeholder="label">
+                    </div>
+
+                    <div class="col-md-12 option-field">
+                        <label class="settings-info">Edge color:</label><br/>
+                        <input id="relationColorSettings" type="text" class="colorPickerTarget settings"/>
+                    </div>
+
+                    <div class="col-md-12 option-field">
+                        <label class="settings-info">Show as attributes:</label>
+                        <input id="showAsAttributes" type="checkbox" class="checkbox-primary">
+                    </div>
+                    <div class="col-md-12 option-field">
+                        <label class="settings-info">Show as arcs:</label>
+                        <input id="showAsArcs" type="checkbox" class="checkbox-primary">
+                    </div>
+                    <div class="col-md-12 option-field">
+                        <label class="settings-info">Edge style:</label><br/>
+                        <select id="relationEdgeStyleSettings" class="settings">
+                            <option selected value="solid">Solid</option>
+                            <option value="dotted">Dotted</option>
+                            <option value="dashed">Dashed</option>
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

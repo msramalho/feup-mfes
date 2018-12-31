@@ -1,0 +1,22 @@
+<template name="visSettings">
+    <div class="settings">
+        <div class="empty-universe">EMPTY UNIVERSE</div>
+        <div class="settings-panel">
+            <div class="settings-content">
+                <div class="scroll-settings">
+                    {{> generalSettings}}
+                    {{> atomSettings}}
+                    {{> relationSettings}}
+                    <hr/>
+                    {{>elementSelection}}
+                </div>
+            </div>
+
+            <button id="settings-button" class="settings-button">
+                                    <span class="glyphicon glyphicon-cog">
+                                    </span>
+            </button>
+        </div>
+    </div>
+    {{> rightClickOptionsMenu}}
+</template>
