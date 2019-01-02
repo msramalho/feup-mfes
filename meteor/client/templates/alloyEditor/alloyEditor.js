@@ -357,7 +357,7 @@ Template.alloyEditor.onRendered(function () {
         });
     })(jQuery);
     $('#optionsMenu').hide();
-    if (Router.current().data().lockedLines)
+    if (Router.current().data().lockedLines) // TODO: this only works on /{id} not /
         lockLines(Router.current().data().lockedLines);
 });
 
