@@ -1,3 +1,5 @@
+Currently running at http://alloy4fun.di.uminho.pt
+
 Docker contains meteor (without hot code), mongodb, and java container
 
 Magic command: `docker-compose up -d` (meteor available at localhost:3010 and api at localhost:8080)
