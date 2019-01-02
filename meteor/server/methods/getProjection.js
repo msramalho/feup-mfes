@@ -15,7 +15,7 @@ Meteor.methods({
             args.type.push(key + frameInfo[key]);
         }
         try {
-            var client = Soap.createClient(url);
+            var client = Soap.createClient(`${Meteor.settings.env.API_URL}/getProjection`);
             var result = client.getProjection(args);
         } catch (err) {
             if (err.error === 'soap-creation') {

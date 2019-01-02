@@ -26,7 +26,7 @@ Meteor.methods({
             forceInterpretation: forceInterpretation
         };
         try {
-            var client = Soap.createClient(url);
+            var client = Soap.createClient(`${Meteor.settings.env.API_URL}/getInstances`);
             var result = client.getInstance(args);
         } catch (err) {
             if (err.error === 'soap-creation') {
