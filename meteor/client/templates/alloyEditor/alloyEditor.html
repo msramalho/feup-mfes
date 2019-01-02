@@ -1,47 +1,46 @@
 <template name="alloyEditor">
-<div class="container-fluid">
+    <div class="container-fluid">
 
-  <div class="row">
-    <!-- page head -->
-      <div id="headTitle" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <h1 class="page-header">Alloy4Fun
-          </h1>
-      </div>
+        <div class="row">
+            <!-- page head -->
+            <div id="headTitle" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h1 class="page-header">Alloy4Fun
+                </h1>
+            </div>
 
-  </div>
-
-
-  <div>
-      <div id="information" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <p>For more information about the language consult the <a target="_blank" href="http://alloytools.org/documentation.html">documentation</a> or try the <a target="_blank" href="http://alloytools.org/tutorials/day-course/">tutorial</a>. </p>
-      </div>
+        </div>
 
 
-    <!-- Code container + buttons -->
-      <div class="container max-width">
+        <div>
+            <div id="information" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <p>For more information about the language consult the <a target="_blank" href="http://alloytools.org/documentation.html">documentation</a> or try the <a target="_blank" href="http://alloytools.org/tutorials/day-course/">tutorial</a>. </p>
+            </div>
+
+
+            <!-- Code container + buttons -->
+            <div class="container max-width">
                 {{> textEditor}}
 
-    <!--Command combo box -->
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="command-selection">
-                            <label>Command : </label>
-                                {{#with getCommands}}
+                <!--Command combo box -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="command-selection">
+                        <label>Command : </label>
+                        {{#with getCommands}}
                             <select>
                                 {{#each this}}
                                     <option value="{{this}}">{{this}}</option>
                                 {{/each}}
                             </select>
                         {{/with}}
-                  </div>
-            </div>
+                    </div>
+                </div>
 
 
-            <!-- Previous Instance : prev div
+                <!-- Previous Instance : prev div
                  Execute : exec div
-                 Next Instance : next div
-            -->
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="text-center">
+                 Next Instance : next div -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="text-center">
 
                         <div id="prev" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <button id="prevbtn" class="cbutton cbutton--effect-boris float-right">
@@ -59,6 +58,14 @@
                             </button>
                         </div>
 
+                        <div id="validateModel" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                            <button id="validatebtn" class="cbutton cbutton--effect-boris">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <i class="cbutton__icon fa fa-fw fa-play auto-margin"></i></div>
+                                <span class="cbutton__text">Play</span><i class="legend">Validate</i>
+                            </button>
+                        </div>
+
                         <div id="next" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                             <button id="nextbtn" class="cbutton cbutton--effect-boris float-left">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -67,13 +74,13 @@
                             </button>
                         </div>
                     </div>
-            </div>
+                </div>
 
 
-            <!--  Share model : genUrl div -->
+                <!--  Share model : genUrl div -->
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div  id="genUrl" class="text-center permalink">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div id="genUrl" class="text-center permalink">
                         <button id="genurlbtn" class="cbutton cbutton--effect-boris ">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <span class="glyphicon glyphicon-link"></span>
@@ -81,27 +88,27 @@
                             <span class="cbutton__text">GenUrl</span><i class="legend">Share model</i>
                         </button>
                     </div>
-            </div>
+                </div>
 
-            <!-- URL div -->
-            <div id="url-permalink" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+                <!-- URL div -->
+                <div id="url-permalink" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="log"></div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="log"></div>
 
-            <!-- Instance Viewer -->
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        {{drawInstance}}
+                <!-- Instance Viewer -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    {{drawInstance}}
                     <div id="instanceViewer" class="instanceViewer col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         {{> frameNavigation}}
                         <div id="instance"></div>
                         {{> visSettings}}
                     </div>
-            </div>
+                </div>
 
-            <!-- Share Instance */ -->
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div  id="genInstanceUrl" class="text-center permalink">
+                <!-- Share Instance */ -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div id="genInstanceUrl" class="text-center permalink">
                         <button id="geninstanceurlbtn" class="cbutton cbutton--effect-boris ">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <span class="glyphicon glyphicon-link"></span>
@@ -109,11 +116,11 @@
                             <span class="cbutton__text">GenInstanceUrl</span><i class="legend">Share instance</i>
                         </button>
                     </div>
-            </div>
-            <div id="url-instance-permalink" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+                </div>
+                <div id="url-instance-permalink" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
 
-     </div>
-  </div>
-</div>
+            </div>
+        </div>
+    </div>
 
 </template>
