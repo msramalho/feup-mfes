@@ -18,6 +18,7 @@ Router.route('/', {
     template: 'alloyEditor',
     where: 'client'
 });
+
 Router.route('/:_id', {
     name: 'editorLoad',
     template: 'alloyEditor',
