@@ -281,8 +281,8 @@ Template.alloyEditor.events({
     },
     'click #validateModel': function() { // click on the validate button
         Meteor.call('validate', textEditor.getValue(), (err, res) => {
-            if(err)console.error("Unable to connect to server")
-            else{
+            if (err) console.error("Unable to connect to server")
+            else {
                 console.log(res);
             }
         })
