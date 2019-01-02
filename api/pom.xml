@@ -44,6 +44,11 @@
       <artifactId>Alloy</artifactId>
       <version>5.0.0.1</version>
     </dependency>
+    <dependency>
+    	<groupId>org.json</groupId>
+    	<artifactId>json</artifactId>
+    	<version>20180813</version>
+    </dependency>
   </dependencies>
   <dependencyManagement>
     <dependencies>
