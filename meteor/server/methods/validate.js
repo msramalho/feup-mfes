@@ -6,9 +6,8 @@
  */
 Meteor.methods({
     validate: function(code) {
-        let url = "http://localhost:8080/validate";
 		return new Promise((resolve, reject) => {
-			HTTP.call('POST', url, {
+			HTTP.call('POST', `${Meteor.settings.env.API_URL}/validate`, {
 				data: {
 					model: code
 				}
