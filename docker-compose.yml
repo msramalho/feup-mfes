@@ -8,13 +8,11 @@ services:
     links:
       - mongo
       - api
-    # depends_on: # TODO: depends_on não garante que este começa depois dos outros e isso é desejável, não essencial
-    #   - mongo
-    #   - api
-    volumes:
-      - ./:/opt/meteor/src
+    # volumes:
+      # - ./:/opt/meteor/src
     environment:
       - MONGO_URL=mongodb://mongo:27017/meteor
+      - METEOR_SETINGS='{API_URL="localhost:8080"}'
   mongo:
     image: mongo:latest
     # command: bash -c "mongod --storageEngine=wiredTiger && sudo chmod 777 data/db -R"
@@ -27,4 +25,4 @@ services:
     build:
       context: ./api/
     ports:
-      - "8080:8080" # if access id needed from the outside (otherwise no need)
+      - "8081:8080" # if access id needed from the outside (otherwise no need)
