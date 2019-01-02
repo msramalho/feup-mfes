@@ -10,12 +10,10 @@ services:
       - api
     # volumes:
       # - ./:/opt/meteor/src
-    environment:
-      - MONGO_URL=mongodb://mongo:27017/meteor
-      - METEOR_SETTINGS={"API_URL":"localhost:8080"}
+    env_file:
+      - .env
   mongo:
     image: mongo:latest
-    # command: bash -c "mongod --storageEngine=wiredTiger && sudo chmod 777 data/db -R"
     command: mongod --storageEngine=wiredTiger
     volumes:
       - ./data/db:/data/db # TODO: garantir persistência da DB
