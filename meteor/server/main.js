@@ -9,5 +9,4 @@ Meteor.startup(() => {
 
     Todos = new Mongo.Collection('todos');
     console.log("MONGO IS ALIVE");
-
 });
