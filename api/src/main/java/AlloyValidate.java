@@ -66,6 +66,7 @@ public class AlloyValidate {
 	 * @return String containing the line and column of the syntax error
 	 */
 	private int[] getErrorLocationFromException(Exception e) {
+		// TODO get line, col from e.pos.y, e.pos.x respectively
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		e.printStackTrace(pw);
