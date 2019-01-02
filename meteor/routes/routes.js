@@ -21,6 +21,6 @@ Router.route('/', {
 Router.route('/:_id', {
     name: 'editorLoad',
     template: 'alloyEditor',
-    controller :"editorLoadController",
+    controller: "editorLoadController",
     where: 'client'
 });
