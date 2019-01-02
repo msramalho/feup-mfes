@@ -21,7 +21,7 @@ import edu.mit.csail.sdg.parser.CompUtil;
 @Path("/validate")
 public class AlloyValidate {
 	@POST
-	@Produces("text/plain")
+	@Produces("text/json")
 	public Response doPost(String body) throws IOException {
 		String model = getModelFromJSON(body);
 		A4Reporter rep = new A4Reporter();
