@@ -9,6 +9,8 @@ import javax.ws.rs.core.Response;
 
 import org.json.JSONObject;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
+
 import edu.mit.csail.sdg.alloy4.A4Reporter;
 import edu.mit.csail.sdg.parser.CompUtil;
 
@@ -30,7 +32,7 @@ public class AlloyValidate {
 		try {
 			CompUtil.parseEverything_fromString(rep, model);
 		} catch (Exception e) {
-			String errorLocation = getErrorLocationFromException(e);
+			int[] errorLocation = getErrorLocationFromException(e);
 			String message = e.getMessage();
 			message = fixMessage(message);
 			String response = makeErrorJson(errorLocation, message);
@@ -63,14 +65,25 @@ public class AlloyValidate {
 	 * @param e
 	 * @return String containing the line and column of the syntax error
 	 */
-	private String getErrorLocationFromException(Exception e) {
+	private int[] getErrorLocationFromException(Exception e) {
 		StringWriter sw = new StringWriter();
 		PrintWriter pw = new PrintWriter(sw);
 		e.printStackTrace(pw);
 		String trace = sw.toString(); // stack trace as a string
 		String firstLine = trace.split("\n")[0];
 		String errorLocation = firstLine.split(" at ")[1];
-		return errorLocation.substring(0, errorLocation.length() - 1);
+		errorLocation = errorLocation.substring(0, errorLocation.length() - 1);
+		int line, col;
+		String[] exp;
+		exp = errorLocation.split("column");
+		for (int i = 0; i < exp.length; i++) {
+			exp[i] = exp[i].trim();
+		}
+		line = Integer.parseInt(exp[0].replace("line ", ""));
+		col = Integer.parseInt(exp[1]);
+
+		return new int[] { line, col };
+
 	}
 
 	/**
@@ -81,10 +94,13 @@ public class AlloyValidate {
 	 * @param message
 	 * @return String
 	 */
-	private String makeErrorJson(String errorLocation, String message) {
+	private String makeErrorJson(int[] errorLocation, String message) {
 		JSONObject jo = new JSONObject();
 		jo.put("success", false);
-		jo.put("errorLocation", errorLocation);
+		JSONObject loca = new JSONObject();
+		loca.put("line", errorLocation[0]);
+		loca.put("column", errorLocation[1]);
+		jo.put("errorLocation", loca);
 		jo.put("errorMessage", message);
 		return jo.toString();
 	}

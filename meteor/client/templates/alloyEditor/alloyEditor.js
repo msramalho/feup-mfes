@@ -281,9 +281,18 @@ Template.alloyEditor.events({
     },
     'click #validateModel': function() { // click on the validate button
         Meteor.call('validate', textEditor.getValue(), (err, res) => {
-            if (err) console.error("Unable to connect to server")
-            else {
-                console.log(res);
+            if(err)console.error("Unable to connect to server")
+            else{
+                res = JSON.parse(res);
+                if(!res.success){
+                    addErrorMarkerToGutter(res.errorMessage, res.errorLocation.line)
+                }else{ // success
+                    swal({
+                        title: "The Model is Valid!",
+                        text: "You're doing great!",
+                        type: "info"
+                    });
+                }
             }
         })
     }
@@ -669,6 +678,8 @@ function zeroclipboard() {
     });
 };
 
+
+// TODO Remove this because it's not to be used any longer
 function lockLines(lockedLines) {
     lockedLines.forEach(function(n) {
         var info = textEditor.lineInfo(n);
