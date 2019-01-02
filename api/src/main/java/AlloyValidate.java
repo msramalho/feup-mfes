@@ -85,7 +85,7 @@ public class AlloyValidate {
 		JSONObject jo = new JSONObject();
 		jo.put("success", false);
 		jo.put("errorLocation", errorLocation);
-		jo.put("message", message);
+		jo.put("errorMessage", message);
 		return jo.toString();
 	}
 
