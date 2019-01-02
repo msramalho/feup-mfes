@@ -28,3 +28,10 @@ buildNumber.properties
 *.iml
 *.iws
 out/
+api/\.classpath
+
+api/\.project
+
+api/\.settings/
+
+api/bin/
