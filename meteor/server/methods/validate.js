@@ -6,6 +6,17 @@
  */
 Meteor.methods({
     validate: function(code) {
-		
+        // return "Your code is" + code;
+        let url = "http://localhost:8080/validate";
+        console.log(
+            HTTP.call('POST', url, {
+                param: JSON.stringify({
+                    model: code
+                })
+            }, function(err, res){
+				console.log(err);
+				console.log(res);
+			})
+        )
     }
 });
