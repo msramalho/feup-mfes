@@ -35,7 +35,7 @@ Template.alloyEditor.helpers({
 
 });
 Template.alloyEditor.events({
-    'click #exec': function(evt) { // clicked on "Execute" button
+    'click #exec': function(evt) { // click on "Execute" button
         currentlyProjectedTypes = [];
         currentFramePosition = {};
         allAtoms = [];
@@ -279,7 +279,7 @@ Template.alloyEditor.events({
         //Meteor.call('storeInstance', textEditor.getValue(), themeData, cy.json(), handleGenInstanceURLEvent);
         Meteor.call('storeInstance', runID, themeData, cy.json(), handleGenInstanceURLEvent);
     },
-    'click #validateModel': function(evt) { // click on the validate button
+    'click #validateModel': function() { // click on the validate button
         Meteor.call('validate', textEditor.getValue(), (err, res) => {
             if(err)console.error("Unable to connect to server")
             else{
