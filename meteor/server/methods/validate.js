@@ -6,16 +6,16 @@
  */
 Meteor.methods({
     validate: function(code) {
-        // return "Your code is" + code;
         let url = "http://localhost:8080/validate";
-
-        HTTP.call('POST', url, {
-            data: { model: code}
-          }, (error, result) => {
-              console.log(result);
-            if (!error) {
-              return true;
-            }
-          });
+		return new Promise((resolve, reject) => {
+			HTTP.call('POST', url, {
+				data: {
+					model: code
+				}
+			}, (error, result) => {
+				if (error) reject(error)
+				resolve(result.content)
+			});	
+		})
     }
 });
