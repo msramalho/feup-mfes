@@ -7,12 +7,9 @@ Router.configure({
     //Template displayed while loading data.
     loadingTemplate: 'loading',
     //Template displayed when there's no route for the sub domain.
-    notFoundTemplate: 'notFound',
-    //Main page template, useful to display copyrights and menus in every page.
-    layoutTemplate: 'layout'
+    notFoundTemplate: 'notFound'
 });
 
-/*Home page routing - single page*/
 Router.route('/', {
     name: 'editor',
     template: 'alloyEditor',
