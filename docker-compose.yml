@@ -8,7 +8,7 @@ services:
     links:
       - mongo
       - api
-    # depends_on: # TOO: depends_on não garante que este começa depois dos outros e isso é desejável, não essencial
+    # depends_on: # TODO: depends_on não garante que este começa depois dos outros e isso é desejável, não essencial
     #   - mongo
     #   - api
     volumes:
