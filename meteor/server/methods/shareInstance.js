@@ -1,21 +1,26 @@
+import {Instance} from "../../lib/collections/instance"
 /**
  * Meteor method to store a model instance with the user-defined theme
  * Used in Share Instance option
- * Creates an instance that points to the run/execution
- * Saves the theme and the instance itself
- * @param runID id of the execution
- * @param themeData information about the theme used
- * @param instance object with information about the frame
- * @return url to make possible share the instance
+ * Creates an instance that points to the model
+ * Saves the theme in the instance itself
  */
 Meteor.methods({
-    storeInstance: function(runID, themeData, instance) {
-        var instanceID = Instance.insert({
-            run_id: runID,
+    /**
+     * Saves the instance and returns the id
+     * @param {String} modelId the model id
+     * @param {String} command the name of the command that was executed
+     * @param {String} instance the JSON string of the cytoscape graph
+     * @param {Object} themeData with the theme information for cytoscape
+     * @return id of the new instance
+     */
+    storeInstance: function(modelId, command, instance, themeData) {
+        return Instance.insert({
+            model_id: modelId,
+            command: command,
             graph: instance,
             theme: themeData,
-            date: new Date().toLocaleString()
+            time: new Date().toLocaleString()
         });
-        return instanceID;
     }
 });

@@ -1,17 +1,13 @@
-/**
- * Created by josep on 20/08/2016.
- */
-
-currentLayout = "breadthfirst";
+currentLayout = 'breadthfirst';
 nodeSpacing = 0.1;
 layouts = {
-    breadthfirst : {
-        name: "breadthfirst",
+    breadthfirst: {
+        name: 'breadthfirst',
         avoidOverlap: true,
         maximalAdjustments: 1,
         padding: 10,
         directed: true,
-        spacingFactor: nodeSpacing
+        spacingFactor: nodeSpacing,
     },
     cocentric: {
         name: 'concentric',
@@ -27,19 +23,19 @@ layouts = {
         avoidOverlap: true, // prevents node overlap, may overflow boundingBox if not enough space
         height: undefined, // height of layout area (overrides container height)
         width: undefined, // width of layout area (overrides container width)
-        concentric: function( node ){ // returns numeric value for each node, placing higher nodes in levels towards the centre
+        concentric(node) { // returns numeric value for each node, placing higher nodes in levels towards the centre
             return node.degree();
         },
-        levelWidth: function( nodes ){ // the variation of concentric values in each level
+        levelWidth(nodes) { // the variation of concentric values in each level
             return nodes.maxDegree() / 4;
         },
         animate: false, // whether to transition the node positions
         animationDuration: 500, // duration of animation in ms if enabled
         animationEasing: undefined, // easing of animation if enabled
         ready: undefined, // callback on layoutready
-        stop: undefined // callback on layoutstop
+        stop: undefined, // callback on layoutstop
     },
-    random : {
+    random: {
         name: 'random',
 
         fit: true, // whether to fit to viewport
@@ -49,9 +45,9 @@ layouts = {
         animationDuration: 500, // duration of animation in ms if enabled
         animationEasing: undefined, // easing of animation if enabled
         ready: undefined, // callback on layoutready
-        stop: undefined // callback on layoutstop
+        stop: undefined, // callback on layoutstop
     },
-    circle : {
+    circle: {
         name: 'circle',
 
         fit: true, // whether to fit the viewport to the graph
@@ -67,9 +63,9 @@ layouts = {
         animationDuration: 500, // duration of animation in ms if enabled
         animationEasing: undefined, // easing of animation if enabled
         ready: undefined, // callback on layoutready
-        stop: undefined // callback on layoutstop
+        stop: undefined, // callback on layoutstop
     },
-    grid : {
+    grid: {
         name: 'grid',
         fit: true, // whether to fit the viewport to the graph
         padding: 10, // padding used on fit
@@ -79,22 +75,22 @@ layouts = {
         condense: false, // uses all available space on false, uses minimal space on true
         rows: undefined, // force num of rows in the grid
         cols: undefined, // force num of columns in the grid
-        position: function( node ){}, // returns { row, col } for element
-        sort : function(a, b){
-            return a.data('label') < b.data('label')
+        position(node) {}, // returns { row, col } for element
+        sort(a, b) {
+            return a.data('label') < b.data('label');
         }, // a sorting function to order the nodes; e.g. function(a, b){ return a.data('weight') - b.data('weight') }
         animate: false, // whether to transition the node positions
         animationDuration: 500, // duration of animation in ms if enabled
         animationEasing: undefined, // easing of animation if enabled
         ready: undefined, // callback on layoutready
-        stop: undefined // callback on layoutstop
+        stop: undefined, // callback on layoutstop
     },
-    cose : {
+    cose: {
         name: 'cose',
         // Called on `layoutready`
-        ready: function(){},
+        ready() {},
         // Called on `layoutstop`
-        stop: function(){},
+        stop() {},
         // Whether to animate while running the layout
         animate: true,
         // The layout animates only after this many milliseconds
@@ -112,13 +108,13 @@ layouts = {
         // Extra spacing between components in non-compound graphs
         componentSpacing: 100,
         // Node repulsion (non overlapping) multiplier
-        nodeRepulsion: function( node ){ return 400000; },
+        nodeRepulsion(node) { return 400000; },
         // Node repulsion (overlapping) multiplier
         nodeOverlap: 10,
         // Ideal edge (non nested) length
-        idealEdgeLength: function( edge ){ return 10; },
+        idealEdgeLength(edge) { return 10; },
         // Divisor to compute edge forces
-        edgeElasticity: function( edge ){ return 100; },
+        edgeElasticity(edge) { return 100; },
         // Nesting factor (multiplier) to compute ideal edge length for nested edges
         nestingFactor: 5,
         // Gravity force (constant)
@@ -132,16 +128,16 @@ layouts = {
         // Lower temperature threshold (below this point the layout will end)
         minTemp: 1.0,
         // Whether to use threading to speed up the layout
-        useMultitasking: true
-    }
+        useMultitasking: true,
+    },
 
-}
-
-
-applyCurrentLayout = function(){
-    if(cy.elements().size()>0)cy.layout(layouts[currentLayout]);
 };
 
-updateNodeSpacing = function(newValue){
-    layouts["breadthfirst"].spacingFactor = (newValue/100)*5;
+
+applyCurrentLayout = function () {
+    if (cy.elements().size() > 0)cy.layout(layouts[currentLayout]);
+};
+
+updateNodeSpacing = function (newValue) {
+    layouts.breadthfirst.spacingFactor = (newValue / 100) * 5;
 };

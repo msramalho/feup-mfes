@@ -1,33 +1,29 @@
-/**
- * Created by josep on 03/08/2016.
- */
-
 generalSettings = {};
 
-setOriginalAtomNamesValue = function (value){
-    if(value){
-        $("#atomLabelSettings").prop('disabled', true);
+setOriginalAtomNamesValue = function (value) {
+    if (value) {
+        $('#atomLabelSettings').prop('disabled', true);
         var nodes = cy.nodes();
-        nodes.forEach(function(node){
-            var originalName = node.data().id.split("$")[0];
+        nodes.forEach((node) => {
+            const originalName = node.data().id.split('$')[0];
             node.data().label = originalName;
-            node.data().dollar = "$";
+            node.data().dollar = '$';
         });
-    }else{
-        $("#atomLabelSettings").prop('disabled', false);
+    } else {
+        $('#atomLabelSettings').prop('disabled', false);
         var nodes = cy.nodes();
-        nodes.forEach(function(node){
+        nodes.forEach((node) => {
             node.data().label = getAtomLabel(node.data().type);
-            node.data().dollar = "";
+            node.data().dollar = '';
         });
     }
 };
 
-updateOriginalAtomNames = function(value){
+updateOriginalAtomNames = function (value) {
     generalSettings.useOriginalAtomNames = value;
 };
 
-/*elements = [{
+/* elements = [{
     "data":{"id":"n0"},
     "position":{
         "x":122.50374073928583,

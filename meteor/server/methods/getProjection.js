@@ -6,25 +6,30 @@
  * @return JSON object with the projection
  */
 Meteor.methods({
-    getProjection: function(sessionId, frameInfo) {
-        var args = {
-            sessid: sessionId,
-            type: []
-        };
+    getProjection: function(uuid, frameInfo) {
+        let type = [];
         for (var key in frameInfo) {
-            args.type.push(key + frameInfo[key]);
-        }
-        try {
-            var client = Soap.createClient(`${Meteor.settings.env.API_URL}/getProjection`);
-            var result = client.getProjection(args);
-        } catch (err) {
-            if (err.error === 'soap-creation') {
-                throw new Meteor.Error(500, "We're sorry! The service is currently unavailable. Please try again later.");
-            } else if (err.error === 'soap-method') {
-                throw new Meteor.Error(501, "TYPE=" + types + "-XXX");
-            }
-        }
+            type.push(key + frameInfo[key]);
+        };
+        return new Promise((resolve, reject) => {
+            HTTP.call('POST', `${Meteor.settings.env.API_URL}/getProjection`, {
+                data: {
+                    uuid: uuid,
+                    type: type
+                }
+            }, (error, result) => {
+                if (error) reject(error)
+                let content = JSON.parse(result.content)
+                if (content.unsat) {
+                    content.commandType = "check";
+                } else {
+                    Object.keys(content).forEach(k => {
+                        content[k].commandType = "check";
+                    });
+                }
+                resolve(content);
 
-        return JSON.parse(result[Object.keys(result)[0]]);
+            });
+        })
     }
 });

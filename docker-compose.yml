@@ -1,6 +1,6 @@
 version: '3'
 services:
-  meteor: # TODO: criar script que pode ser corrido dentro deste container para recriar o meteor sem ter de fazer build à imagem, dado que o src está atualizado com o volume /opt/meteor/src
+  meteor:
     build:
       context: ./meteor/
     ports:
@@ -8,15 +8,13 @@ services:
     links:
       - mongo
       - api
-    # volumes:
-      # - ./:/opt/meteor/src
     env_file:
       - .env
   mongo:
     image: mongo:latest
     command: mongod --storageEngine=wiredTiger
     volumes:
-      - ./data/db:/data/db # TODO: garantir persistência da DB
+      - ./data/db:/data/db
     ports:
       - "27017:27017"
   api:

@@ -1,79 +1,77 @@
 /**
- * Created by José Pereira on 11/3/2016.
+ * This file specifies the syntax highlighting rules for the codemirror editor
+ * each rule is composed by regex and token, which allows for css rules on the tokens
+ * such as .cm.comment {...} and also to refer to those tokens after parsing the syntax
+ * Additionaly "sol: true" attribute means that the match should happen only at line start
  */
+
 import CodeMirror from 'codemirror';
-import * as simpleMode from 'codemirror/addon/mode/simple';
-export {defineAlloyMode};
+import * as simpleMode from 'codemirror/addon/mode/simple'; //do not remove despite unused warning
+export { defineAlloyMode };
 
 function defineAlloyMode() {
-    //Defines syntax highlighting rules, allowing Code Mirror to support new languages, like Alloy.
-    CodeMirror.defineSimpleMode("alloy", {
+    CodeMirror.defineSimpleMode('alloy', {
         start: [{
             regex: /(\W)(abstract|fun|all|iff|check|but|else|assert|extends|set|fact|implies|module|open|sig|and|disj|for|in|no|or|as|Int|pred|sum|exactly|iden|let|not|run|univ)(?:\b)/,
-            //Token value refers to regex captured matching groups.
-            token: [null, "keyword"]
+            token: [null, 'keyword'],
         }, {
-            //For some reason " ^ " doesn't work as supposed (line start). A workaround was necessary to correctly identify keywords on the beginning of the line.
             regex: /(abstract|fun|all|iff|check|but|else|assert|extends|set|fact|implies|module|open|sig|and|disj|for|in|no|or|as|Int|pred|sum|exactly|iden|let|not|run|univ)(?:\b)/,
-            token: "keyword",
-            //Rule that only applies if the match is at the start of some line(workaround).
-            sol: true
+            token: 'keyword',
+            sol: true,
         }, {
             regex: /(\W)(one|lone|none|some)(?:\b)/,
-            token: [null, "atom"]
+            token: [null, 'atom'],
         }, {
-            //For some reason " ^ " doesn't work as supposed (line start). A workaround was necessary to correctly identify atoms on the beginning of the line.
             regex: /(one|lone|none|some)(?:\b)/,
-            token: "atom",
-            //Rule that only applies if the match is at the start of some line(workaround).
-            sol: true
+            token: 'atom',
+            sol: true,
+        }, {
+            regex: /^\/\/SECRET$/mg,
+            token: 'secret',
+            sol: true,
         }, {
             regex: /\/\*/,
-            token: "comment",
-            //Jump to comment mode.
-            next: "comment"
+            token: 'comment',
+            next: 'comment', // Jump to comment mode.
         }, {
             regex: /(\+\+ )|=>|=<|->|>=|\|\||<:|:>/,
-            token: "operator"
+            token: 'operator',
         }, {
-            //Line comment.
+            // Line comment.
             regex: /\/\/.*/,
-            token: "comment"
+            token: 'comment',
         }, {
             regex: /(\s+|\||{|})[0-9]+](?:\b)/,
-            token: [null, "number"]
+            token: [null, 'number'],
         }, {
-            //For some reason " ^ " doesn't work as supposed (line start). A workaround was necessary to correctly identify numbers on the beginning of the line.
             regex: /(\s+|\||{|})[0-9]+](?:\b)/,
-            token: "number",
-            //Rule that only applies if the match is at the start of some line(workaround).
-            sol: true
+            token: 'number',
+            // Rule that only applies if the match is at the start of some line(workaround).
+            sol: true,
         }, {
             regex: /[{(]/,
-            indent: true
+            indent: true,
         }, {
             regex: /[})]/,
-            dedent: true
-        }
-        ],
-        //Modes allow applying a different set of rules to different contexts.
+            dedent: true,
+        }],
+        // Modes allow applying a different set of rules to different contexts.
         comment: [{
-            //When the comment block end tag is found...
+            // When the comment block end tag is found...
             regex: /.*?\*\//,
-            token: "comment",
-            //...go back to start mode.
-            next: "start"
+            token: 'comment',
+            next: 'start', // ...go back to start mode.
         }, {
             regex: /.*/,
-            token: "comment"
-        }
+            token: 'comment',
+        },
 
         ],
-        //Simple Mode additional settings, check documentation for more information.
+        // Simple Mode additional settings, check documentation for more information.
         meta: {
-            //Prevent indentation inside comments.
-            dontIndentStates: ["comment"],
-            lineComment: "//"
-        }
+            // Prevent indentation inside comments.
+            dontIndentStates: ['comment'],
+            lineComment: '//',
+        },
     });
 }

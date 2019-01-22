@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 
 import edu.mit.csail.sdg.alloy4.A4Reporter;
+import edu.mit.csail.sdg.alloy4.Err;
 import edu.mit.csail.sdg.parser.CompUtil;
 
 /**
@@ -31,7 +32,7 @@ public class AlloyValidate {
 
 		try {
 			CompUtil.parseEverything_fromString(rep, model);
-		} catch (Exception e) {
+		} catch (Err e) {
 			int[] errorLocation = getErrorLocationFromException(e);
 			String message = e.getMessage();
 			message = fixMessage(message);
@@ -56,35 +57,17 @@ public class AlloyValidate {
 	 * @return the fixed message
 	 */
 	private String fixMessage(String message) {
-		return message.replace("\n", "").trim();
+		return message.replace("\n", " ").trim();
 	}
 
 	/**
 	 * extracts the error location (line and column) from the stackTrace
 	 * 
 	 * @param e
-	 * @return String containing the line and column of the syntax error
+	 * @return array containing the line and column of the syntax error
 	 */
-	private int[] getErrorLocationFromException(Exception e) {
-		// TODO get line, col from e.pos.y, e.pos.x respectively
-		StringWriter sw = new StringWriter();
-		PrintWriter pw = new PrintWriter(sw);
-		e.printStackTrace(pw);
-		String trace = sw.toString(); // stack trace as a string
-		String firstLine = trace.split("\n")[0];
-		String errorLocation = firstLine.split(" at ")[1];
-		errorLocation = errorLocation.substring(0, errorLocation.length() - 1);
-		int line, col;
-		String[] exp;
-		exp = errorLocation.split("column");
-		for (int i = 0; i < exp.length; i++) {
-			exp[i] = exp[i].trim();
-		}
-		line = Integer.parseInt(exp[0].replace("line ", ""));
-		col = Integer.parseInt(exp[1]);
-
-		return new int[] { line, col };
-
+	private int[] getErrorLocationFromException(Err e) {
+		return new int[] { e.pos.y, e.pos.x };
 	}
 
 	/**

@@ -33,3 +33,5 @@ benjaminrh:jquery-blockui
 perak:codemirror
 fortawesome:fontawesome
 http
+meteortesting:mocha
+practicalmeteor:chai

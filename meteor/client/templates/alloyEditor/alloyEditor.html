@@ -3,8 +3,8 @@
 
         <div class="row">
             <!-- page head -->
-            <div id="headTitle" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h1 class="page-header">Alloy4Fun
+            <div id="headTitle" class="col-xs-12">
+                <h1 class="page-header"> <img width="20" height="20" style="margin-right:10px; vertical-align: inherit" src="/favicon.ico"/>Alloy4Fun
                 </h1>
             </div>
 
@@ -12,25 +12,21 @@
 
 
         <div>
-            <div id="information" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <p>For more information about the language consult the <a target="_blank" href="http://alloytools.org/documentation.html">documentation</a> or try the <a target="_blank" href="http://alloytools.org/tutorials/day-course/">tutorial</a>. </p>
-            </div>
-
-
+            
             <!-- Code container + buttons -->
             <div class="container max-width">
                 {{> textEditor}}
 
                 <!--Command combo box -->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-xs-4">
                     <div class="command-selection">
                         <label>Command : </label>
                         {{#with getCommands}}
-                            <select>
-                                {{#each this}}
-                                    <option value="{{this}}">{{this}}</option>
-                                {{/each}}
-                            </select>
+                        <select>
+                            {{#each this}}
+                            <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </select>
                         {{/with}}
                     </div>
                 </div>
@@ -39,87 +35,94 @@
                 <!-- Previous Instance : prev div
                  Execute : exec div
                  Next Instance : next div -->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-md-4 col-xs-12">
                     <div class="text-center">
-                        
-                        <div id="exec" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <button id="execbtn" class="cbutton cbutton--effect-boris">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div id="exec" class="col-xs-6">
+                            <button class="cbutton cbutton--effect-boris">
+                                <div class="col-xs-12">
                                     <i class="cbutton__icon fa fa-fw fa-play auto-margin"></i></div>
                                 <span class="cbutton__text">Play</span><i class="legend">Execute</i>
                             </button>
                         </div>
-
-                        <div id="validateModel" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <button id="validatebtn" class="cbutton cbutton--effect-boris">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div id="validateModel" class="col-xs-6">
+                            <button class="cbutton cbutton--effect-boris">
+                                <div class="col-xs-12">
                                     <i class="cbutton__icon fa fa-fw fa-check auto-margin"></i></div>
-                                <span class="cbutton__text">Play</span><i class="legend">Validate</i>
+                                <span class="cbutton__text">Validate</span><i class="legend">Validate</i>
                             </button>
                         </div>
-
-                        <div id="prev" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <button id="prevbtn" class="cbutton cbutton--effect-boris float-right">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <i class="cbutton__icon fa fa-fw fa-step-backward auto-margin"></i></div>
-                                <span class="cbutton__text">Backward</span><i class="legend">Previous instance</i>
+                        <div id="genUrl" class="col-xs-6 text-center permalink">
+                            <button id="genurlbtn" class="cbutton cbutton--effect-boris ">
+                                <div class="col-xs-12">
+                                    <span class="glyphicon glyphicon-link"></span>
+                                </div>
+                                <span class="cbutton__text">GenUrl</span><i class="legend">Share model</i>
                             </button>
                         </div>
-
-                        <div id="next" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <button id="nextbtn" class="cbutton cbutton--effect-boris float-left">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <i class="cbutton__icon fa fa-fw fa-step-forward auto-margin"></i></div>
-                                <span class="cbutton__text">Forward</span><i class="legend">Next instance</i>
+                        <div id="downloadTree" class="col-xs-6">
+                            <button class="cbutton cbutton--effect-boris">
+                                <div class="col-xs-12">
+                                    <i class="cbutton__icon fa fa-fw fa-arrow-down auto-margin"></i></div>
+                                <span class="cbutton__text">Download Tree</span><i class="legend">Download Tree</i>
                             </button>
                         </div>
-                    </div>
-                </div>
-
-
-                <!--  Share model : genUrl div -->
-
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div id="genUrl" class="text-center permalink">
-                        <button id="genurlbtn" class="cbutton cbutton--effect-boris ">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <span class="glyphicon glyphicon-link"></span>
-                            </div>
-                            <span class="cbutton__text">GenUrl</span><i class="legend">Share model</i>
-                        </button>
                     </div>
                 </div>
 
                 <!-- URL div -->
-                <div id="url-permalink" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+                <div id="url-permalink" class="col-md-4 col-xs-12"></div>
 
 
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="log"></div>
+                <div class="col-xs-10 col-xs-offset-1" id="log"></div>
 
                 <!-- Instance Viewer -->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-xs-10 col-xs-offset-1">
                     {{drawInstance}}
-                    <div id="instanceViewer" class="instanceViewer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div id="instanceViewer" class="instanceViewer col-xs-12">
                         {{> frameNavigation}}
                         <div id="instance"></div>
                         {{> visSettings}}
                     </div>
                 </div>
 
+                <div id="prev" class="col-xs-6">
+                    <button class="cbutton cbutton--effect-boris float-right">
+                        <div class="col-xs-12">
+                            <i class="cbutton__icon fa fa-fw fa-step-backward auto-margin"></i></div>
+                        <span class="cbutton__text">Backward</span><i class="legend">Previous instance</i>
+                    </button>
+                </div>
+
+                <div id="next" class="col-xs-6">
+                    <button class="cbutton cbutton--effect-boris float-left">
+                        <div class="col-xs-12">
+                            <i class="cbutton__icon fa fa-fw fa-step-forward auto-margin"></i></div>
+                        <span class="cbutton__text">Forward</span><i class="legend">Next instance</i>
+                    </button>
+                </div>
+
                 <!-- Share Instance */ -->
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="col-xs-12">
                     <div id="genInstanceUrl" class="text-center permalink">
                         <button id="geninstanceurlbtn" class="cbutton cbutton--effect-boris ">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-xs-12">
                                 <span class="glyphicon glyphicon-link"></span>
                             </div>
                             <span class="cbutton__text">GenInstanceUrl</span><i class="legend">Share instance</i>
                         </button>
                     </div>
                 </div>
-                <div id="url-instance-permalink" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"></div>
+                <div id="url-instance-permalink" class="col-xs-12"></div>
 
             </div>
+            <footer class="footer">
+                <div class="container">
+                    <div id="information" class="text-center col-xs-12">
+                        <p>For more information about the language consult the <a target="_blank" href="http://alloytools.org/documentation.html">documentation</a>
+                            or try the <a target="_blank" href="http://alloytools.org/tutorials/day-course/">tutorial</a>. </p>
+                    </div>
+                </div>
+            </footer>
         </div>
     </div>
 

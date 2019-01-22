@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "6"
+addons:
+  chrome: stable
+before_script:
+  - cd meteor
+  - curl https://install.meteor.com | /bin/sh
+  - export PATH=$HOME/.meteor:$PATH
+  - npm install
+notifications:
+  email:
+    on_success: never
+    on_failure: always # default: always

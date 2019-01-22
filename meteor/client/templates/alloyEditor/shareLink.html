@@ -1,0 +1,15 @@
+<template name="shareLink">
+    <span>
+        <p>{{title}}
+            <div class="col-xs-12">
+                <a href="{{link}}" class="urlinfo">{{fullLink}}</a>
+            </div>
+        </p>
+        <div class="col-xs-12">
+            <button class="clipboardbutton cbutton cbutton--effect-boris" data-clipboard-text="{{fullLink}}">
+                <img src="/images/icons/clipboard.png">
+                <i class="legend">copy to clipboard</i>
+            </button>
+        </div>
+    </span>
+</template>
