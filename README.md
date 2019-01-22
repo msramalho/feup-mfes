@@ -5,7 +5,6 @@ Web app for editing, sharing and interpreting [Alloy](http://alloytools.org/) mo
 
 Originally developed at [U. Minho](https://www.uminho.pt/) and [Haslab](https://github.com/haslab). Improved by [Faculty of Engineering of the University do Porto](https://fe.up.pt/). This repo was developed with the help of [@Dannyps](https://github.com/Dannyps) and refers to the [v1.0.0](https://github.com/haslab/Alloy4FunWebApp/commit/433dc1bfa932b4687f926722821c631e0ab72299) version of alloy4fun, so it is not expected to updated, the live repo can be found [here](https://github.com/haslab/Alloy4FunWebApp). A complete list of changes done by @FEUP team can be found in the [report](REPORT.md).
 
-
 **LIVE DEMO:** http://alloy4fun.di.uminho.pt (still not updated to the latest version last time we checked)
 
 **ABOUT:** Alloy4Fun is being developed using:
