@@ -2,7 +2,7 @@
 
 Web application for editing, sharing and interpreting [Alloy](http://alloytools.org/) models in your browser, in real time.
 
-<a href="https://travis-ci.org/msramalho/Alloy4FunWebApp"><img align="right" alt="Build Status" src="https://travis-ci.org/msramalho/Alloy4FunWebApp.svg?branch=v1.0.0"/></a>
+<a href="https://travis-ci.org/msramalho/feup-mfes"><img align="right" alt="Build Status" src="https://travis-ci.org/msramalho/feup-mfes.svg?branch=master"/></a>
 
 **LIVE DEMO:** http://alloy4fun.di.uminho.pt.
 
