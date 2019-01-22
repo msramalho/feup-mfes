@@ -1,10 +1,12 @@
 <h1 align="center"><img src="/meteor/public/favicon.ico" height="24"> Alloy4fun</h1>
 
-Web application for editing, sharing and interpreting [Alloy](http://alloytools.org/) models in your browser, in real time.
-
+Web app for editing, sharing and interpreting [Alloy](http://alloytools.org/) models in your browser, in real time. 
 <a href="https://travis-ci.org/msramalho/feup-mfes"><img align="right" alt="Build Status" src="https://travis-ci.org/msramalho/feup-mfes.svg?branch=master"/></a>
 
-**LIVE DEMO:** http://alloy4fun.di.uminho.pt.
+Originally developed at [U. Minho](https://www.uminho.pt/) and [Haslab](https://github.com/haslab). Improved by [Faculty of Engineering of the U. do Porto](https://fe.up.pt/). This repo was developed with the help of @Dannyps and refers to the v1.0.0 version of alloy4fun, so it is not expected to updated, the live repo can be found [here](https://github.com/haslab/Alloy4FunWebApp).
+
+
+**LIVE DEMO:** http://alloy4fun.di.uminho.pt (maybe)
 
 **ABOUT:** Alloy4Fun is being developed using:
  * [Meteor](https://www.meteor.com/) framework which is a full-stack JavaScript platform for developing modern web and mobile applications.
@@ -62,9 +64,3 @@ To run the tests just do `npm test`
 Linter is also installed and configured but not included in the CI pipeline, to run the linter you can do `npm run lint` inside the `meteor` folder. To run linter without the `--fix` option do `eslint .`.
 
 To include the linter in the CI pipeline (first make sure all linter errors are fixed) and then add the following to the [package.json](meteor/package.json) `scripts`: `"pretest": "npm run lint --silent"`
-
-## Team
-Alloy4fun has been developed by:
- * [Haslab](https://github.com/haslab)
- * [Universidade do Minho](https://www.uminho.pt/)
- * [Universidade do Porto](https://fe.up.pt/)
